@@ -1,4 +1,4 @@
-package Loader;
+package com.github.MrMks.WereWolf.Loader;
 
 /**
  * Created by Mirora_Mikasa on 2017/3/12.
