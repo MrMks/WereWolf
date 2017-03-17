@@ -24,19 +24,6 @@ public class CommandE {
 
     public void Act(Player sender, Command cmd, String[] args){
         switch(args[0]){
-            case "join":
-            case "j":
-            case "visit":
-            case "ready":
-            case "r":
-            case "exit":
-            case "e":
-            case "select":
-            case "*":
-            case "talk":
-            case "t":
-                common.act(sender,args);
-                break;
             case "vote":
             case "v":
             case "start":
@@ -48,6 +35,9 @@ public class CommandE {
                 } else {
                     sender.sendMessage("you have no permission to do this.");
                 }
+                break;
+            default:
+                common.act(sender,args);
                 break;
         }
     }
