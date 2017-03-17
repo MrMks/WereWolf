@@ -13,8 +13,20 @@ public class CommonE {
     public CommonE(DataTable data){
         this.data = data;
     }
+    
+    // /ww join
 
     public void act(Player sender, String[] args){
-
+        switch(args[0]){
+            case "join":
+            case "j":
+                String FakeName = sender.getName();
+                if(args[].length == 2) FakeName = args[1];
+                join(sender,FakeName);
+                break;
+            case "visit":
+                visit(sender);
+                break;
+        }
     }
 }
