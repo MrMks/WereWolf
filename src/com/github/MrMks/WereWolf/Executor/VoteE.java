@@ -13,8 +13,20 @@ public class VoteE {
     public VoteE(DataTable data){
         this.data = data;
     }
-
+    
+    // /ww conviction player
+    // /ww start
+    
     public void act(Player sender, String[] args){
+        switch(args[0]){
+            case "conviction":
+            case "c":
+                conviction(sender,args[1]);
+                break;
+            case "start":
+                start(sender);
+                break;
+        }
 
     }
 
