@@ -27,6 +27,22 @@ public class CommonE {
             case "visit":
                 visit(sender);
                 break;
+            case "exit":
+                exit(sender);
+                break;
+            case "ready":
+                ready(sender);
+                break;
+            case "talk":
+            case "t":
+                talk(sender);
+                break;
+            case "select":
+            case "s":
+                select(sender):
+                break;
+            default:
+                sender.sendMessage("no this command");
         }
     }
 }
