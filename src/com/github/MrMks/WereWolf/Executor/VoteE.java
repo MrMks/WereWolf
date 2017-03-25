@@ -1,27 +1,32 @@
 package com.github.MrMks.WereWolf.Executor;
 
+import com.github.MrMks.WereWolf.Charater.WPlayer;
 import com.github.MrMks.WereWolf.DataTable;
 import org.bukkit.entity.Player;
+
+import java.util.LinkedHashMap;
 
 /**
  * Created by Mirora_Mikasa on 2017/3/12.
  */
 public class VoteE {
 
-    DataTable data;
+    private DataTable data;
+    private LinkedHashMap<String, Integer> VoteRecord;
+    private Integer StartRecord = 0;
 
-    public VoteE(DataTable data){
+    public VoteE(DataTable data) {
         this.data = data;
     }
-    
-    // /ww conviction player
+
+    // /ww vote player
     // /ww start
-    
-    public void act(Player sender, String[] args){
-        switch(args[0]){
-            case "conviction":
-            case "c":
-                conviction(sender,args[1]);
+
+    public void act(Player sender, String[] args) {
+        switch (args[0]) {
+            case "vote":
+            case "v":
+                vote(sender, args);
                 break;
             case "start":
                 start(sender);
@@ -30,4 +35,28 @@ public class VoteE {
 
     }
 
+    private void vote(Player sender, String[] args) {
+        if (!player_exist(sender)) {
+            sender.sendMessage("you aren't a player or a spectator in this game");
+            return;
+        }
+        if (args.length == 1) {
+            sender.sendMessage("this command required a Name,but you didn't give your target's Name\n" +
+                    "use \"/ww name\" to get a list of players' Name");
+            return;
+        }
+    }
+
+    private void start(Player sender) {
+        if(!sender_to_wplayer(sender).visitor && player_exist(sender)) StartRecord += 1;
+    }
+
+    Integer getStartRecord(){return StartRecord;}
+
+    private boolean player_exist(Player sender) {
+        return data.NameList.get(sender.getName()) != null;
+    }
+    private WPlayer sender_to_wplayer(Player sender) {
+        return data.PlayerList.get(data.NameList.get(sender.getName()));
+    }
 }

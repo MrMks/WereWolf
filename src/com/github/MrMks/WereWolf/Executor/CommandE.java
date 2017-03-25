@@ -41,4 +41,8 @@ public class CommandE {
                 break;
         }
     }
+
+    public Boolean all_start(){
+        return vote.getStartRecord().equals(data.player_number);
+    }
 }

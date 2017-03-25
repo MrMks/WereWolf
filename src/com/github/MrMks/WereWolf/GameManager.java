@@ -16,7 +16,11 @@ public class GameManager extends JavaPlugin{
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
         if(sender instanceof Player) commandE.Act((Player) sender,command,args);
+        if(commandE.all_start()) game_start();
+        return true;
+    }
 
-        return false;
+    private void game_start(){
+
     }
 }
