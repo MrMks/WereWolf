@@ -13,4 +13,5 @@ public class Job {
     public ArrayList<ArrayList<String>> VictimJudgement;
     public ArrayList<Skill> skills;
     public ArrayList<Ability> abilities;
+    public String Display;
 }

@@ -15,15 +15,15 @@ import org.bukkit.entity.Player;
  * select / s
  * name
  */
-public class CommonE {
+class CommonE {
 
     private DataTable data;
 
-    public CommonE(DataTable data){
+    CommonE(DataTable data){
         this.data = data;
     }
 
-    public void act(Player sender, String[] args) {
+    void act(Player sender, String[] args) {
         switch (args[0]) {
             case "join":
             case "j":

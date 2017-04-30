@@ -11,6 +11,6 @@ public class Skill {
     public Integer LimitE;
     public String Time;
     public Number amp;
-    public ArrayList<LinkedHashMap<String,String[]>> success;
-    public ArrayList<LinkedHashMap<String,String[]>> failure;
+    public ArrayList<LinkedHashMap<String,ArrayList<String>>> success;
+    public ArrayList<LinkedHashMap<String,ArrayList<String>>> failure;
 }

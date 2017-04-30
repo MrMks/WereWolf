@@ -5,16 +5,16 @@ import com.github.MrMks.WereWolf.DataTable;
 /**
  * Created by Mirora_Mikasa on 2017/3/12.
  */
-public class GmE {
+class GmE {
 
-    DataTable data;
+    private DataTable data;
 
-    public GmE(DataTable data){
+    GmE(DataTable data){
         this.data = data;
     }
 
-
-    public void act(String[] args){
+    //keep empty until i can make it
+    void act(String[] args){
 
     }
 

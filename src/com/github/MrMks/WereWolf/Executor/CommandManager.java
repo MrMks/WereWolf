@@ -11,16 +11,14 @@ import java.util.Vector;
 /**
  * Created by Mirora_Mikasa on 2017/3/12.
  */
-public class CommandE {
+public class CommandManager {
 
     private DataTable data;
     private CommonE common = new CommonE(data);
     private GmE gm = new GmE(data);
     private VoteE vote = new VoteE(data);
 
-    public CommandE(DataTable data){
-        this.data = data;
-    }
+    public CommandManager(DataTable data){this.data = data;}
 
     public void Act(Player sender, Command cmd, String[] args){
         switch(args[0]){

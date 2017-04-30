@@ -10,9 +10,11 @@ import java.util.LinkedHashMap;
 public class DataTable {
     public LinkedHashMap<String,String> NameList;
     // PlayerName -> FakeName
-    public LinkedHashMap<String,WPlayer> PlayerList;
+    public LinkedHashMap<String, WPlayer> PlayerList;
     // FakeName -> WolfPlayer
     public Integer time;
 
     public Integer player_number = 0;
+    public LinkedHashMap string_joblist;
+    public LinkedHashMap jobList;
 }

@@ -1,0 +1,107 @@
+jobs:
+  wolf:
+    display: 人狼
+    faction: wolf
+    channel:
+      - wolf
+      - day
+    victim:
+      -
+        - number_faction.wolf > number_faction.villager
+    skill:
+      -
+        limitE: 1
+        limitA: -1
+        time: night
+        amp: 100
+        action:
+          -
+            if:
+              - target.job = wolf
+              - target.alive = true
+            do:
+          -
+            if:
+              - target.alive = true
+              - target.job <> wolf
+            do:
+              - kill target wolf @amp(100) @success(stop) @fail(stop)
+    ability:
+      -
+        call: kill target
+        life: 1
+        wait: 1
+        if:
+          -
+          -
+          -
+          -
+        do:
+          -
+
+  villager:
+    display: 村民
+    faction: villager
+    channel:
+      - day
+    victim:
+      -
+        - number_job.wolf = 0
+    skill: {}
+    ability: {}
+  hunter:
+    display: 猎人
+    faction: villager
+    channal:
+      - day
+    victim:
+      -
+        - number_job.wolf = 0
+    skill:
+      -
+        limitE: 1
+        limitA: -1
+        amp: 100
+        time: night
+        skill:
+          -
+            if: []
+            do:
+              - @listen(@a) @life(1) @wait(0) kill self @if() @do() @lv(3)
+              - kill target
+    ability: {}
+  mad_father:
+    display: 愉快犯神父
+    faction: villager
+    channal:
+      - day
+    victim:
+      -
+        - self.switch = true 2
+    skill:
+      -
+        limitA: -1
+        limitE: 1
+        amp: 100
+        time: night
+        if:
+          - self.alive = true
+          - target.alive = true
+          - self.switch = false 1
+        do:
+          - @listen(@a) @wait(0) @life(1) kill target @if(2) @do(1) @lv(6)
+          - self.alive = true
+          - target.alive = true
+          - switch_on self 1
+          - @listen(@n) @wait(1) @life(1) @if(3) @do(2) @lv(6)
+          - self.alive = true
+          - target.alive = true
+          - self.switch = true 1
+          - kill target
+          - switch_on self 2
+          - @listen(@n) @wait(1) @life(1) @if(2) @do(3) @lv(6)
+          - self.switch = true 2
+          - target.alive = false
+          - switch_on self 3
+          - switch_off self 1
+          - switch_off self 2
