@@ -1,23 +1,6 @@
-Yaml yml = new Yaml();
-File file = new File("charator.yml")
-LinkedHashMap tempList = yml.loadAs(file,LinkedHashMap);
+DataTable <= waiting player
 
-for(String key:tempList.keySet()) {
-  LinkedHashMap l = (LinkedHashMap) tempList.get(key);
-  String name = key;
-  String display = (String) l.get("display");
-  ArrayList<String> faction = (ArrayList<String>) l.get("faction");
-  // [channal:time,...]
-  ArrayList<String> channal = (ArrayList<String>) l.get("channal");
-  LinkedHashMap skill = (LinkedHashMap) l.get("skill");
-  LinkedHashMap ability = (LinkedHashMap) l.get("ability");
-  
-  Integer limitA = skill.get("limitA");
-  Integer limitE = skill.get("limitE");
-  String time = skill.get("time");
-  Inteher amp = skill.get("amp");
-  ArrayList ifs = skill.get("if");
-  ArrayList dos = skill.get("do");
-  ArrayList failed = skill.get("failed");
-  
-  
+DataTable.waitingplayer => Room
+            进入夜晚            进入白天
+Room 分配职业  ->   特殊职业间交谈  ->   事件结算 -> 终局判定
+                   事件收集     
