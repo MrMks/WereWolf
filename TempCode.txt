@@ -4,3 +4,20 @@ DataTable.waitingplayer => Room
             进入夜晚            进入白天
 Room 分配职业  ->   特殊职业间交谈  ->   事件结算 -> 终局判定
                    事件收集     
+
+
+
+if (args.size >= 2) {
+  if (DataTable.isNoThisRoom(args[1]) {
+    BukkitBase.sendMessage(uuid,LocaleLang.get("command.join.NoThisRoom"));
+  } else {
+    if (isInOneRoom) {
+      if (DataTable.isSameRoom(uuid,args[1]) {
+        BukkitBase.sendMessage(uuid,LocaleLang.get("command.join.inSameRoom"));
+        return;
+      }
+      String FakeName = args == 3 ? args[2] : DataTable.lastFakeName;
+      DataTable.movePlayer(uuid,args[1],FakeName);
+    } else {
+      String FakeName = args == 3 ? args[2] : BukkitBase.getPlayerName(uuid);
+      DataTable.addPlayer(uuid,args[2],FakeName);
