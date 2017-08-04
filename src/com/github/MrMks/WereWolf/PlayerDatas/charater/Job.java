@@ -1,4 +1,4 @@
-package com.github.MrMks.WereWolf.Charater;
+package com.github.MrMks.WereWolf.PlayerDatas.charater;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ public class Job {
     public Integer index;
     public String JobName;
     public String Faction;
-    public ArrayList<String> Channal;
+    public ArrayList<Channel> Channels;
     public ArrayList<ArrayList<String>> VictimJudgement;
     public ArrayList<Skill> skills;
     public ArrayList<Ability> abilities;

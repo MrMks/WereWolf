@@ -1,0 +1,24 @@
+Room:
+  mkRoom:
+    - new
+  delRoom:
+    - del
+  clearRoom:
+    - clear
+Normal:
+  join:
+    - join
+  visit:
+    - visit
+  ready:
+    - ready
+  start:
+    - start
+  select_target:
+    - select
+    - target
+    - choose
+  talk:
+    - talk
+    - channel
+    - chat
