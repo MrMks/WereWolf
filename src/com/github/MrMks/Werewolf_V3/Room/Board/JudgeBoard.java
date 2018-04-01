@@ -25,7 +25,7 @@ public class JudgeBoard {
     }
 
     private AdditionArgument getAdditionArgument(Integer tar){
-        return PlayerData.getPlayerData(tar).getAdditionArgument();
+        return PlayerData.getPlayerDataOfIndex(tar).getAdditionArgument();
     }
 
     public boolean isAlive(Integer target){

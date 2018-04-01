@@ -13,11 +13,11 @@ public class OperateBoard {
         this.roomToGlobal = roomToGlobal;
     }
     private BaseArgument getBaseArgument(Integer tar){
-        return PlayerData.getPlayerData(tar).getBaseArgument();
+        return PlayerData.getPlayerDataOfIndex(tar).getBaseArgument();
     }
 
     private AdditionArgument getAdditionArgument(Integer tar){
-        return PlayerData.getPlayerData(tar).getAdditionArgument();
+        return PlayerData.getPlayerDataOfIndex(tar).getAdditionArgument();
     }
 
     public void kill(Integer target){

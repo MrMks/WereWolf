@@ -9,6 +9,7 @@ import com.github.MrMks.Werewolf_V3.Room.Progress.WereWolfGameProgressControl;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Room {
 
@@ -37,8 +38,16 @@ public class Room {
         else freshed_index.add(roomIndex);
     }
 
-    private PlayerData creaton = null;
+    public static List<Integer> getRoomIndexList(){
+        return new ArrayList<>(roomList.keySet());
+    }
+
+
+    private PlayerData creator = null;
     private Integer index = 0;
+
+    private Integer inRoom_next_index = 0;
+    private Integer inRoom_freshed_index;
 
     private LinkedHashMap<Integer,Integer> jobAlivePlayer = new LinkedHashMap<>();
     private LinkedHashMap<Integer,Integer> jobDeadPlayer = new LinkedHashMap<>();
@@ -57,11 +66,47 @@ public class Room {
     }
 
     private void setCreator(PlayerData creator){
-        this.creaton = creator;
+        this.creator = creator;
     }
 
     private void setIndex(Integer index){
         this.index = index;
+    }
+
+    public void joinRoom(String name,String nickname){
+        PlayerData player = PlayerData.getPlayerData(name,nickname);
+        player.setRoomIndex(index);
+        player.setInRoomIndex(inRoom_next_index++);
+
+        roomToGlobal.put(player.getGlobalIndex(), player.getInRoomIndex());
+    }
+
+    public void exitRoom(Integer GlobalIndex){
+        inRoom_freshed_index = GlobalIndex;
+
+        PlayerData player = PlayerData.getPlayerDataOfIndex(GlobalIndex);
+        player.setInRoomIndex(-1);
+        player.setRoomIndex(-1);
+
+        Integer in_room_index = globalToRoom.get(GlobalIndex);
+
+        roomToGlobal.remove(in_room_index);
+        globalToRoom.remove(GlobalIndex);
+
+        while (inRoom_freshed_index + 1 < inRoom_next_index){
+            Integer g = roomToGlobal.get(inRoom_freshed_index + 1);
+            roomToGlobal.remove(inRoom_freshed_index + 1);
+            roomToGlobal.put(inRoom_freshed_index,g);
+
+            globalToRoom.remove(g);
+            globalToRoom.put(g,inRoom_freshed_index);
+
+            PlayerData.getPlayerDataOfIndex(g).setInRoomIndex(inRoom_freshed_index);
+
+            inRoom_freshed_index += 1;
+        }
+        inRoom_freshed_index = -1;
+        inRoom_next_index -= 1;
     }
 
 }
