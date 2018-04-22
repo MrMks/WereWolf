@@ -7,6 +7,7 @@ import com.github.MrMks.Werewolf_V3.Resources.Gaming.OperateHolders.playerOperHo
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.Set;
 
 public class PlayerData {
     private static LinkedHashMap<Integer,PlayerData> globalPlayerListWithIndex = new LinkedHashMap<>();
@@ -14,6 +15,13 @@ public class PlayerData {
     private static LinkedHashMap<String,PlayerData> globalPlayerListWithNickname = new LinkedHashMap<>();
     private static LinkedList<Integer> recycle_index = new LinkedList<>();
     private static Integer next_index= 1;
+
+    static{
+        PlayerData void_player = new PlayerData(-1,null,null);
+        globalPlayerListWithNickname.put(null,void_player);
+        globalPlayerListWithName.put(null,void_player);
+        globalPlayerListWithIndex.put(-1,void_player);
+    }
 
     public static PlayerData createPlayerData(String name,String nickname){
         PlayerData player;
@@ -41,7 +49,6 @@ public class PlayerData {
     public static PlayerData getPlayerDataOfNickname(String nickname){
         return globalPlayerListWithNickname.get(nickname);
     }
-
 
     //boundary
     private Identity identity;

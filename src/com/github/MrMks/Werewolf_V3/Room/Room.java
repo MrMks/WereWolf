@@ -78,7 +78,8 @@ public class Room {
         player.setRoomIndex(index);
         player.setInRoomIndex(inRoom_next_index++);
 
-        roomToGlobal.put(player.getGlobalIndex(), player.getInRoomIndex());
+        roomToGlobal.put(player.getInRoomIndex(), player.getGlobalIndex());
+        globalToRoom.put(player.getGlobalIndex(), player.getInRoomIndex());
     }
 
     public void exitRoom(Integer GlobalIndex){
@@ -109,4 +110,26 @@ public class Room {
         inRoom_next_index -= 1;
     }
 
+    public ArrayList<String> getPlayerNicknameList(){
+        ArrayList<String> list = new ArrayList<>();
+        for(Integer index:roomToGlobal.values()){
+            list.add(PlayerData.getPlayerDataOfIndex(index).getNickname());
+        }
+        return list;
+    }
+
+    public Integer getGlobalIndex(Integer roomIndex){
+        return roomToGlobal.getOrDefault(roomIndex,-1);
+    }
+
+    public ArrayList<String> getNicknameList(){
+        ArrayList<String> list = new ArrayList<>();
+        for(Integer globalIndex:roomToGlobal.values()){
+            if(PlayerData.getPlayerDataOfIndex(globalIndex).getAdditionArgument().isAlive())
+            {
+                list.add(PlayerData.getPlayerDataOfIndex(globalIndex).getNickname());
+            }
+        }
+        return list;
+    }
 }

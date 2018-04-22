@@ -1,0 +1,5 @@
+name: Werewolf
+main: com.github.MrMks.Werewolf_V3.BukkitSupport.werewolf_plugin
+version: snapshot 0.1
+commands:
+  ww:

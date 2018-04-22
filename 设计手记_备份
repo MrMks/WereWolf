@@ -1,0 +1,53 @@
+指令:
+	加入房间前使用:
+		join:
+			join [room_index] <nickname>
+			
+			可能出现的错误:
+
+
+				0参;
+				1参:
+					room_index 非Integer;
+					room_index 指示房间不存在;
+				2参:
+					room_index 非Integer;
+					room_index 指示房间不存在;
+					nickname 为Integer;
+					nickname 指示玩家不存在;
+				多参;
+			Tab可能出现的情况:
+				0参:返回已创建房间 room_index 列表;
+				1参中:
+					已输入部分不可转为 Integer:
+						返回已创建房间 room_index 列表;
+					已输入部分可转为 Integer:
+						返回已创建房间 room_index 中的匹配项:
+				1参:
+					返回 null;
+	加入房间后使用:
+		通用的可能出现的错误:
+			使用指令的玩家并未加入房间;
+			房间的状态不允许玩家使用该指令;
+			
+		exit:
+			exit
+			
+			可能出现的错误:
+			Tab可能出现的情况:
+		skill:
+			skill [target_in_room_index]/[target_nickname] [<skill_index>]
+			
+			可能出现的错误:
+			Tab可能出现的情况:
+		talk:
+			talk [message] [<fiction>]
+			
+			可能出现的错误:
+			Tab可能出现的情况:
+		vote:
+			vote [target_in_room_index]/[target_nickname]
+			
+			可能出现的错误:
+			Tab可能出现的情况:
+		
